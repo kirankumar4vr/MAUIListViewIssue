@@ -73,15 +73,22 @@ public partial class MainPage : ContentPage
 
     public void ReloadClientList()
     {
-        IsRefreshing = true;
-        //var newClientList = new ObservableCollection<ClientDetails>();
-        ClientList.Clear();
-        for (int i = 0; i < 10; i++)
+        try
         {
-            ClientList.Add(new ClientDetails() { FullName = GetRandomString(), City = GetRandomString(), StartDate = GetRandomDate() });
+            IsRefreshing = true;
+            //var newClientList = new ObservableCollection<ClientDetails>();
+            ClientList.Clear();
+            for (int i = 0; i < 10; i++)
+            {
+                ClientList.Add(new ClientDetails() { FullName = GetRandomString(), City = GetRandomString(), StartDate = GetRandomDate() });
+            }
+            //ClientList = newClientList;
+            IsRefreshing = false;
         }
-        //ClientList = newClientList;
-        IsRefreshing = false;
+        catch(Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "Cancel");
+        }
     }
 }
 
