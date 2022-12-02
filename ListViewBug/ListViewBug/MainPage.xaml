@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListViewBug.MainPage">
+
+    
+            <ListView
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding ClientList}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding ReloadCommand}"
+                IsRefreshing="{Binding IsRefreshing}"
+                SelectionMode="None"
+                SeparatorVisibility="None"
+                VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Margin="10">
+                                            <Label
+                                        AutomationId="FullName"
+                                        AutomationProperties.HelpText="{Binding FullName}"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        AutomationProperties.Name="Full Name Label"
+                                        Text="{Binding FullName}"
+                                        TextColor="Black" />
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                    AutomationId="DateSubmitted"
+                                                    AutomationProperties.HelpText="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                                    AutomationProperties.IsInAccessibleTree="True"
+                                                    AutomationProperties.Name="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                                    Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                                    TextColor="Black" />
+                                                        <Span Text=" | " TextColor="Black" />
+                                                        <Span
+                                                    AutomationId="CitySpan"
+                                                    AutomationProperties.HelpText="{Binding City}"
+                                                    AutomationProperties.IsInAccessibleTree="True"
+                                                    AutomationProperties.Name="{Binding City}"
+                                                    Text="{Binding City}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <!--<StackLayout
+                                    Margin="0,0,20,0"
+                                    HorizontalOptions="EndAndExpand"
+                                    Orientation="Horizontal">
+                                            <ImageButton
+                                        Margin="0,0,20,0"
+                                        Padding="10,0,10,0"
+                                        AutomationId="DeleteButton"
+                                        AutomationProperties.HelpText="Delete icon"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        AutomationProperties.Name="Delete button"
+                                        Command="{Binding DeleteSavedQuoteCommand}"
+                                        CommandParameter="{Binding}"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Fill"
+                                                Aspect="AspectFit"
+                                        Source="deleteicon_crumpblue.png">
+                                            </ImageButton>
+                                            <ImageButton
+                                        Margin="5"
+                                        AutomationId="NavigationIcon"
+                                        AutomationProperties.HelpText="Navigation icon"
+                                        AutomationProperties.IsInAccessibleTree="True"
+                                        AutomationProperties.Name="Navigation icon button"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding ItemSelectedCommand}"
+                                        CommandParameter="{Binding}"
+                                        WidthRequest="50"
+                                        Source="rightarrow_crumpblue.png">
+                                            </ImageButton>
+                                        </StackLayout>-->
+                                    </StackLayout>
+                                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource DividerGray}" />
+                                </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+</ContentPage>
+
